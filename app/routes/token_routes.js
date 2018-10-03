@@ -1,7 +1,7 @@
 // routes/options_routes.js
 module.exports = function(app) {
 	app.get('/', 
-		(req,res) => {
+		(req, res) => {
             res.send({
                 "route":"hello",
                 "operation":"GET",
@@ -12,7 +12,7 @@ module.exports = function(app) {
 	);
 
 	app.get('/token/', 
-		(req,res) => {
+		(req, res) => {
 
             res.send({
                 "route":"token",
