@@ -1,5 +1,5 @@
 // routes/options_routes.js
-module.exports = function(app, db_client, DB_ENV) {
+module.exports = function(app) {
 	app.get('/', 
 		(req,res) => {
             res.send({
