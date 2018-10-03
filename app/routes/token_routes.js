@@ -2,11 +2,16 @@
 module.exports = function(app) {
 	app.get('/', 
 		(req, res) => {
-            res.send({
-                "route":"hello",
-                "operation":"GET",
-                "status_code":200
-            });
+            
+            res.setHeader('Content-Type', 'application/json');
+            res.send(
+                JSON.stringify(
+                {
+                    "route":"hello",
+                    "operation":"GET",
+                    "status_code":200
+                }, null, 3)
+            );
 
 		}
 	);
