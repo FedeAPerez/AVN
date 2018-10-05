@@ -17,6 +17,11 @@ app.use((req, res, next) => {
 
 require('./app/routes')(app);
 
+app.use((req, res, next) => {
+    console.log("Telemetría a futuro para final de req " + req.path);
+    next();
+});
+
 app.listen((port), () => {
 	console.log('Se está ejecutando en el puerto: ' + port);
 });     
