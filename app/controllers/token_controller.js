@@ -6,19 +6,24 @@ module.exports = {
         tokenService.getToken()
         .then((result) => {
             res.send({
-                "route": "token",
-                "operation": "GET",
-                "status": 200,
-                "valid": result
+                "head": {
+                    "route": "token",
+                    "operation": "GET",
+                    "status": 200
+                },
+                "data": {
+                    "token": "38662776_05"
+                }
             });
             next();
         })
         .catch((err) => {
             res.send({
-                "route": "token",
-                "operation": "GET",
-                "status": 500,
-                "valid": err
+                "head": {
+                    "route": "token",
+                    "operation": "GET",
+                    "status": 500
+                }
             });
             next();
         });
@@ -26,10 +31,12 @@ module.exports = {
 
     getValid: function(req, res, next) {
         res.send({
-            "route":"token",
-            "operation":"GET",
-            "status_code":200,
-            "body": {
+            "head": {
+                "route":"token",
+                "operation":"GET_VALID",
+                "status_code":200,
+            },
+            "data": {
                 "isValid": true
             }
         });
