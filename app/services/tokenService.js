@@ -5,9 +5,10 @@ module.exports = {
 	getToken: function() {
 		var ref = database.ref('tokens/' + 1234);
 		return ref.set({
-			token: "1234",
-			patientId: "12",
-			sessionId: "34"
+			token: "38662776_01",
+			patientId: "1",
+			sessionId: "1",
+			centerId: "1"
 		});
 	}
 };

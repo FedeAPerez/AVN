@@ -1,4 +1,0 @@
-
-> @gokdabra/AVN@1.0.0 start C:\projects\AVN
-> nodemon server.js
-

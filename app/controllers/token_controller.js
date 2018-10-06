@@ -4,13 +4,14 @@ module.exports = {
 
     get: function(req, res, next) {
         tokenService.getToken()
-        .then((res) => {
+        .then((result) => {
             res.send({
                 "route": "token",
                 "operation": "GET",
                 "status": 200,
-                "valid": res
+                "valid": result
             });
+            next();
         })
         .catch((err) => {
             res.send({
@@ -19,6 +20,7 @@ module.exports = {
                 "status": 500,
                 "valid": err
             });
+            next();
         });
     },
 
