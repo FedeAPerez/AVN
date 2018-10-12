@@ -1,5 +1,5 @@
 const sessionController = require("../controllers/sessionController");
 
 module.exports = function(app) {
-    app.post('/session/', sessionController.post);
+    app.post('/session', sessionController.post);
 };
