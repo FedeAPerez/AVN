@@ -9,13 +9,10 @@ var admin = require('firebase-admin');
 
 var serviceAccount = require('./private.json');
 
-var defaultApp = admin.initializeApp({
+admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://app-core-6d96d.firebaseio.com"
 });
-
-
-var defaultDatabase = defaultApp.database();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
