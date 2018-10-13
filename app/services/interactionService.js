@@ -4,9 +4,8 @@ const database = firebase.database();
 module.exports = {
     saveIntercation: function(req, res) {
         var ref = database.ref('/interaction/' + req.path + '/' + Date.now());
-        return ref.set(
-        { reqBody: req.body,
-          resBody: res.body}
-          );
+        return ref.set({
+            reqBody: req.body
+        });
     }
 };
