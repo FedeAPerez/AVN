@@ -8,7 +8,7 @@ module.exports = {
 			parsedData = JSON.parse(data);*/
 			data.forEach(element => {
 				var ref = database.ref('/session/' + element.Token_id);
-				return ref.set(element);
+				ref.set(element);
 			});
 		}
 		catch(err) {
