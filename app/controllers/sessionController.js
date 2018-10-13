@@ -15,7 +15,7 @@ module.exports = {
             next();
         })
         .catch((err) => {
-            res.send({
+            res.status(500).send({
                 "head": {
                     "route": "session",
                     "operation": "POST",
