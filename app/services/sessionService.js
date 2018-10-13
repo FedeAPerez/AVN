@@ -4,7 +4,7 @@ const database = firebase.database();
 module.exports = {
 	saveData: function(data) {
 		try {
-			const parsedData;
+			var parsedData;
 			parsedData = JSON.parse(data);
 			var ref = database.ref('/session/' + parsedData.token_id);
 			return ref.set(parsedData);
