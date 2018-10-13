@@ -4,8 +4,10 @@ const database = firebase.database();
 module.exports = {
 	saveData: function(data) {
 		try {
-			var ref = database.ref('/session/' + data.token_id);
-			return ref.set(data);
+			const parsedData;
+			parsedData = JSON.parse(data);
+			var ref = database.ref('/session/' + parsedData.token_id);
+			return ref.set(parsedData);
 		}
 		catch(err) {
 			throw new Error("Error al guardar los datos");
