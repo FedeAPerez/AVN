@@ -3,7 +3,7 @@ const sessionService = require('../services/sessionService');
 module.exports = {
 
     post: function(req, res, next) {
-        sessionService.saveData(req.body.session_data)
+        sessionService.saveData(req.body)
         .then((result) => {
             res.send({
                 "head": {
