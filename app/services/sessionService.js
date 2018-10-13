@@ -6,8 +6,10 @@ module.exports = {
 		try {
 			/*var parsedData;
 			parsedData = JSON.parse(data);*/
-			var ref = database.ref('/session/' + data.Token_id);
-			return ref.set(data);
+			data.forEach(element => {
+				var ref = database.ref('/session/' + element.Token_id);
+				return ref.set(element);
+			});
 		}
 		catch(err) {
 			throw new Error("Error al guardar los datos");
