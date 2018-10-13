@@ -3,7 +3,6 @@ const express        	= require('express');
 const bodyParser     	= require('body-parser');
 const cors 				= require('cors')
 const app            	= express();
-const interactionService = require('./app/services/interactionService');
 
 var port = Number(process.env.PORT || 5858);
 
@@ -21,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.options('*', cors()); 
 
+const interactionService = require('./app/services/interactionService');
 app.use((req, res, next) => {
     console.log("Telemetría a futuro para rutas " + req.path);
     next();
