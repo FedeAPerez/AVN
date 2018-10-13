@@ -3,6 +3,8 @@ const express        	= require('express');
 const bodyParser     	= require('body-parser');
 const cors 				= require('cors')
 const app            	= express();
+const interactionService = require('./app/services/interactionService');
+
 var port = Number(process.env.PORT || 5858);
 
 var admin = require('firebase-admin');
@@ -28,6 +30,7 @@ require('./app/routes')(app);
 
 app.use((req, res, next) => {
     console.log("Telemetría a futuro para final de req " + req.path);
+    interactionService.saveIntercation(req, res);
     next();
 });
 
