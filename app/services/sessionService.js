@@ -3,16 +3,20 @@ const database = firebase.database();
 
 module.exports = {
 	saveData: function(data) {
-		try {
-			/*var parsedData;
-			parsedData = JSON.parse(data);*/
-			data.forEach(element => {
-				var ref = database.ref('/session/' + element.Token_id);
-				ref.set(element);
-			});
-		}
-		catch(err) {
-			throw new Error("Error al guardar los datos");
-		}
+		return new Promise(function(resolve, reject) {
+			try {
+				/*var parsedData;
+				parsedData = JSON.parse(data);*/
+				data.forEach(element => {
+					var ref = database.ref('/session/' + element.Token_id);
+					ref.set(element);
+				});
+				resolve(204);
+			}
+			catch(err) {
+				reject("Error al guardar los datos");
+			}
+		});
+
 	}
 };
