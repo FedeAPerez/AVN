@@ -5,7 +5,8 @@ module.exports = {
     saveIntercation: function(req, res) {
         var ref = database.ref('/interaction/' + req.path + '/' + Date.now());
         return ref.set({
-            reqBody: req.body
+            reqMethod : req.method,
+            reqBody: req.body || "No body"
         });
     }
 };
