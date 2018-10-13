@@ -15,6 +15,8 @@ module.exports = {
             next();
         })
         .catch((err) => {
+            console.error("CAMILA ES ALTA VIRGEN");
+            console.log(req);
             res.status(500).send({
                 "head": {
                     "route": "session",
