@@ -5,8 +5,6 @@ module.exports = {
 	saveData: function(data) {
 		return new Promise(function(resolve, reject) {
 			try {
-				/*var parsedData;
-				parsedData = JSON.parse(data);*/
 				data.forEach(element => {
 					var ref = database.ref('/session/' + element.Token_id);
 					ref.set(element);
