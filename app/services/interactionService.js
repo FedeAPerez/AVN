@@ -6,6 +6,7 @@ module.exports = {
         var ref = database.ref('/interaction/' + req.path.split('/')[1] + '/' + Date.now());
         return ref.set({
             reqMethod : req.method,
+            reqPath : req.path,
             reqBody: req.body || "No body"
         });
     }
