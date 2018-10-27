@@ -30,16 +30,30 @@ module.exports = {
     },
 
     getValid: function(req, res, next) {
-        res.send({
-            "head": {
-                "route":"token",
-                "operation":"GET_VALID",
-                "status_code":200,
-            },
-            "data": {
-                "isValid": true
-            }
-        });
+        if(req.params.token == 000) {
+            res.send({
+                "head": {
+                    "route": "token",
+                    "operation": "GET_VALID",
+                    "status_code": 200,
+                },
+                "data": {
+                    "isValid": false
+                }
+            });
+        }  
+        else {
+            res.send({
+                "head": {
+                    "route": "token",
+                    "operation": "GET_VALID",
+                    "status_code": 200,
+                },
+                "data": {
+                    "isValid": true
+                }
+            });
+        }
         next();
     }
 };
