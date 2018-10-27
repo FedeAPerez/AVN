@@ -4,9 +4,7 @@ module.exports = {
 
     createToken: function(req, res, next) {
         tokenService.getToken(req.body.patientId)
-        .then((result) => {
-            console.log(result);
-            
+        .then((result) => {            
             res.send({
                 "head": {
                     "route": "token",
