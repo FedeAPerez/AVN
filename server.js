@@ -30,7 +30,7 @@ app.get('/favicon.ico', (req, res) => res.status(204));
 app.use((req, res, next) => {
     res.locals.guid = crypto.randomBytes(16).toString("hex");
     res.locals.beginDate = new Date();
-    console.log("Request received in route [" + req.path + "] from Id [" + res.locals.guid + "]");
+    console.log("Request received in route [" + req.path + " - " + req.method + "] from Id [" + res.locals.guid + "]");
     next();
 });
 
@@ -39,7 +39,7 @@ require('./app/routes')(app);
 app.use((req, res, next) => {
     var finishDate = new Date();
     var difference = (finishDate - res.locals.beginDate) / 1000;
-    console.log("Request finished in route [" + req.path + "] from Id [" + res.locals.guid + "] in " + difference + " seconds.");
+    console.log("Request finished in route [" + req.path + " - " + req.method + "] from Id [" + res.locals.guid + "] in " + difference + " seconds.");
     interactionService.saveIntercation(req, res, difference);
     next();
 });
