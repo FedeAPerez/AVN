@@ -2,7 +2,7 @@ const sessionService = require('../services/sessionService');
 
 module.exports = {
 
-    post: function(req, res, next) {
+    saveSession: function(req, res, next) {
         sessionService.saveData(req.body)
         .then((result) => {
             res.send({

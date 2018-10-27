@@ -2,13 +2,15 @@ const tokenService = require('../services/tokenService');
 
 module.exports = {
 
-    get: function(req, res, next) {
-        tokenService.getToken()
+    createToken: function(req, res, next) {
+        tokenService.getToken(req.body.patientId)
         .then((result) => {
+            console.log(result);
+            
             res.send({
                 "head": {
                     "route": "token",
-                    "operation": "GET",
+                    "operation": "POST",
                     "status": 200
                 },
                 "data": {
@@ -21,7 +23,7 @@ module.exports = {
             res.send({
                 "head": {
                     "route": "token",
-                    "operation": "GET",
+                    "operation": "POST",
                     "status": 500
                 }
             });

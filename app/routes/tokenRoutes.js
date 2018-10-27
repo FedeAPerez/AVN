@@ -1,6 +1,6 @@
 const tokenController = require("../controllers/tokenController");
 
 module.exports = function(app) {
-    app.get('/token', tokenController.get);
+    app.post('/token', tokenController.createToken);
 	app.get('/token/:token', tokenController.getValid);
 };
