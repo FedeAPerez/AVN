@@ -6,34 +6,30 @@ module.exports = {
 			Token.getTokenRefFromPatientId(patientId).once("value", function(data) {
 				if(!data.val()) {
 					const newToken = Token.getNewTokenRefFromPatientId(patientId);
-					newToken.refUpdated.set({
-						validated : false
-					}).then(function(error) {
-						if(error) {
-							console.error("Error al generar token");
-							reject();
-						}
-						else {
-							resolve ({
-								tokenNumber: patientId + "_" + newToken.beginSessionId
-							})
-						}
+					Token.createTokenObjectFromRef(newToken.refCreated, 
+					function() {
+						resolve({
+							tokenNumber: patientId + "_" + newToken.beginSessionId
+						});
+					}, 
+					function() {
+						reject({
+							hasError: true
+						});
 					});
 				}
 				else {
 					const newToken = Token.getUpdatedTokenRefFromPatientId(data, patientId);
-					newToken.refUpdated.set({
-						validated : false
-					}).then(function(error) {
-						if(error) {
-							console.error("Error al generar token");
-							reject();
-						}
-						else {
-							resolve({
-								tokenNumber: patientId + "_" + newToken.updatedSessionId
-							});
-						}
+					Token.createTokenObjectFromRef(newToken.refUpdated, 
+					function() {
+						resolve({
+							tokenNumber: patientId + "_" + newToken.updatedSessionId
+						});
+					},
+					function() {
+						reject({
+							hasError: true
+						});	
 					});
 				}
 			});
