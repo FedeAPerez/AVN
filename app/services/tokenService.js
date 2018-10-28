@@ -4,9 +4,8 @@ module.exports = {
 	createTokenFromPatient: function(patientId) {
 		var createTokenFromPatientPromise = new Promise (function (resolve, reject) {
 			var token = new Token(patientId);
-			console.log(token);
 			token._getTokenRefFromPatientId().once("value", function(data) {
-				token._selectStrattegyToAdd(data);
+				token._selectStrattegyToAddFromData(data);
 				token._createToken( 
 					function(patient, session) {
 						resolve({

@@ -28,7 +28,7 @@ var Token = function(patientId) {
         this._newSessionId = updatedSessionId;
     }
 
-    this._selectStrattegyToAdd = function(data) {
+    this._selectStrattegyToAddFromData = function(data) {
         if(data.val()) {
            this._referenceData = data;
            this._getUpdatedTokenRefFromPatientId(); 
