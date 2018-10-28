@@ -5,7 +5,7 @@ const moment = require('moment');
 module.exports = {
     saveInteraction: function(req, res, timeTaken) {
         var dateTime = new Date();
-        var dateTimeToString = moment(dateTime).format("DDMMYYYYHHMMSS");
+        var dateTimeToString = moment(dateTime).format("DDMMYYYYhmmssa");
         console.log(dateTimeToString);
         if(database) {
             try{
