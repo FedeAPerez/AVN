@@ -12,6 +12,8 @@ module.exports = {
 				resolve(204);
 			}
 			catch(err) {
+				console.error("Error al guardar los datos de sesión");
+				console.error(err);
 				reject("Error al guardar los datos");
 			}
 		});
