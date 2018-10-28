@@ -7,9 +7,9 @@
         {
             "type": "node",
             "request": "attach",
-            "name": "Adjuntar programa",
-            "port": 5858,
-            "protocol": "legacy" 
-        }
+            "name": "Attach (Inspector Protocol)",
+            "port": 5757,
+            "protocol": "inspector"
+     }
     ]
 }

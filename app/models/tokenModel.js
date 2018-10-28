@@ -1,30 +1,45 @@
 const firebase = require('firebase-admin');
 const database = firebase.database();
 
-let Token = function() {
-    let _getTokenRefFromPatientId = function(patientId) {
+var Token = function(patientId) {
+    this._patientId = patientId;
+    this._basicReference;
+    this._newReference;
+    this._newSessionId;
+
+    this._getTokenRefFromPatientId = function() {
         // Devuelve la referencia general del token
-        let ref = database.ref('tokens/' + patientId);
+        let ref = database.ref('tokens/' + this._patientId);
         return ref;
     };
     
-    let _getNewTokenRefFromPatientId = function(patientId) {
+    this._getNewTokenRefFromPatientId = function() {
         // Genera la primer referencia del token
         const beginSessionId = 1;
-        const refCreated = database.ref('tokens/' + patientId + '/' + beginSessionId);
-        return { refCreated, beginSessionId };
+        this._newReference = database.ref('tokens/' + this._patientId + '/' + beginSessionId);
+        this._newSessionId = beginSessionId;
     };
 
-    let _getUpdatedTokenRefFromPatientId = function(data, patientId) {
+    this._getUpdatedTokenRefFromPatientId = function() {
         // Genera la nueva referencia incrementando de la anterior
-        const sessionsCreated = Object.keys(data.val());
+        const sessionsCreated = Object.keys(this._referenceData.val());
         const updatedSessionId = parseInt(sessionsCreated[sessionsCreated.length - 1]) + 1;
-        const refUpdated = database.ref('tokens/' + patientId + '/' + updatedSessionId);
-        return { refUpdated, updatedSessionId};
+        this._newReference = database.ref('tokens/' + this._patientId + '/' + updatedSessionId);
+        this._newSessionId = updatedSessionId;
     }
 
-    let _createTokenObjectFromRef = function(ref, resolve, reject) {
-        ref.set({
+    this._selectStrattegyToAdd = function(data) {
+        if(data.val()) {
+           this._referenceData = data;
+           this._getUpdatedTokenRefFromPatientId(); 
+        }
+        else {
+            this._getNewTokenRefFromPatientId();
+        }
+    }
+
+    this._createToken = function(resolve, reject) {
+        this._newReference.set({
             validated : false
         }).then(function(error) {
             if(error) {
@@ -36,12 +51,6 @@ let Token = function() {
         });
     };
 
-    return {
-        getTokenRefFromPatientId : _getTokenRefFromPatientId,
-        getNewTokenRefFromPatientId : _getNewTokenRefFromPatientId,
-        getUpdatedTokenRefFromPatientId : _getUpdatedTokenRefFromPatientId,
-        createTokenObjectFromRef : _createTokenObjectFromRef
-    };
-}();
+};
 
 module.exports = Token;

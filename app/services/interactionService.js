@@ -6,7 +6,6 @@ module.exports = {
     saveInteraction: function(req, res, timeTaken) {
         var dateTime = new Date();
         var dateTimeToString = moment(dateTime).format("DDMMYYYY-h-mm-ss-a");
-        console.log(dateTimeToString);
         if(database) {
             try{
                 var ref = database.ref('/interaction/' + req.path.split('/')[1] + '/' + dateTimeToString);
