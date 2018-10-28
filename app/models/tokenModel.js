@@ -12,6 +12,11 @@ var Token = function(patientId) {
         let ref = database.ref('tokens/' + this._patientId);
         return ref;
     };
+
+    this._getTokenSessionRefFromSessionId = function(sessionId) {
+        let ref = database.ref('tokens/' + this._patientId + '/' + sessionId);
+        return ref;
+    }
     
     this._getNewTokenRefFromPatientId = function() {
         // Genera la primer referencia del token

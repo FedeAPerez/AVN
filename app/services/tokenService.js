@@ -20,7 +20,31 @@ module.exports = {
 				);
 			});
 		});
+
 		return createTokenFromPatientPromise;
-		
+	},
+
+	validTokenFromTokenId: function(tokenValue) {
+		var validTokenFromTokenIdPromise = new Promise(function (resolve, reject) {
+			const tokenValueReg = tokenValue.split('_');
+			const possibleTokenPatientId = tokenValueReg[0];
+			const possibleTokenSession = tokenValueReg[1];
+			
+			var token = new Token(parseInt(possibleTokenPatientId));
+			token._getTokenSessionRefFromSessionId(possibleTokenSession).once("value", function(data) {
+				if(data.val()) {
+					resolve({
+						isValid: true
+					})
+				}
+				else {
+					resolve ({
+						isValid: false
+					});
+				}
+			});
+		});
+
+		return validTokenFromTokenIdPromise;
 	}
 };

@@ -5,7 +5,6 @@ module.exports = {
     createToken: function(req, res, next) {
         tokenService.createTokenFromPatient(req.body.patientId)
         .then((result) => {
-            console.log(result);            
             res.send({
                 "head": {
                     "route": "token",
@@ -31,7 +30,21 @@ module.exports = {
     },
 
     getValid: function(req, res, next) {
-        if(req.params.token == 000) {
+        tokenService.validTokenFromTokenId(req.params.tokenValue)
+        .then((result) => {
+            res.send({
+                "head": {
+                    "route": "token",
+                    "operation": "GET_VALID",
+                    "status_code": 200,
+                },
+                "data": {
+                    "isValid": result.isValid
+                }
+            });  
+            next();
+        })  
+        .catch((err) => {
             res.send({
                 "head": {
                     "route": "token",
@@ -42,19 +55,8 @@ module.exports = {
                     "isValid": false
                 }
             });
-        }  
-        else {
-            res.send({
-                "head": {
-                    "route": "token",
-                    "operation": "GET_VALID",
-                    "status_code": 200,
-                },
-                "data": {
-                    "isValid": true
-                }
-            });
-        }
+            
         next();
+        });
     }
 };
