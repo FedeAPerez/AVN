@@ -6,7 +6,8 @@ module.exports = {
 		return new Promise(function(resolve, reject) {
 			try {
 				data.forEach(element => {
-					var ref = database.ref('/session/' + element.Token + '/' + element.Ejercicio);
+					const tokenSplited = element.Token.split('_');
+					var ref = database.ref('/session/' + tokenSplited[0] + '/' + tokenSplited[1] + '/' + element.Ejercicio);
 					ref.set(element);
 				});
 				resolve(204);
