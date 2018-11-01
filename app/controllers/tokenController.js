@@ -38,9 +38,7 @@ module.exports = {
                     "operation": "GET_VALID",
                     "status_code": 200,
                 },
-                "data": {
-                    "isValid": result.isValid
-                }
+                "data": result
             });  
             next();
         })  

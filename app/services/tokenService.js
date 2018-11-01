@@ -1,4 +1,5 @@
 const Token = require('../models/tokenModel');
+const Patient = require('../models/patientModel');
 
 module.exports = {
 	createTokenFromPatient: function(patientId) {
@@ -33,8 +34,19 @@ module.exports = {
 			var token = new Token(parseInt(possibleTokenPatientId));
 			token._getTokenSessionRefFromSessionId(possibleTokenSession).once("value", function(data) {
 				if(data.val()) {
-					resolve({
-						isValid: true
+					var patient = new Patient(parseInt(possibleTokenPatientId));
+					patient._getPatientRefFromPatientId().once("value", function(data) {
+						if(data.val()) {
+							resolve({
+								isValid: true,
+								patient: data.val()
+							})
+						}
+						else {
+							resolve ({
+								isValid: false
+							});
+						}
 					})
 				}
 				else {
