@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "startdev": "SET PORT=5757 && nodemon server.js --inspect=5757"
+    "startdev": "SET AUTH_KEY=ataxicos && SET PORT=5757 && SET IS_AUTH_ENABLED=true && nodemon server.js --inspect=5757"
   },
   "repository": {
     "type": "git",
