@@ -25,10 +25,11 @@ const metricsController = require('./app/controllers/metricsController');
 app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.use((req, res, next) => {
-    if(IS_AUTH_ENABLED && authController.isAuthValid(req)) {
+    console.log(IS_AUTH_ENABLED);
+    if (!!IS_AUTH_ENABLED){
         metricsController.createRequest(req, res, next);
     }
-    else if (!IS_AUTH_ENABLED){
+    else if(IS_AUTH_ENABLED && authController.isAuthValid(req)) {
         metricsController.createRequest(req, res, next);
     }
     else {
