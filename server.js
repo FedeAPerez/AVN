@@ -28,6 +28,9 @@ app.use((req, res, next) => {
     if(IS_AUTH_ENABLED && authController.isAuthValid(req)) {
         metricsController.createRequest(req, res, next);
     }
+    else if (!IS_AUTH_ENABLED){
+        metricsController.createRequest(req, res, next);
+    }
     else {
         res.set(403).send("Not authenticated.");
     }
