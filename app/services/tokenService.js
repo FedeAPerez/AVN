@@ -43,20 +43,36 @@ module.exports = {
 							})
 						}
 						else {
-							resolve ({
-								isValid: false
-							});
+							reject();
 						}
 					})
 				}
 				else {
-					resolve ({
-						isValid: false
-					});
+					reject();
 				}
 			});
 		});
 
 		return validTokenFromTokenIdPromise;
+	},
+
+	validListTokenFromPatientId: function(patientId) {
+
+		var getValidListFromPatientId = new Promise(function (resolve, reject) {
+			var token = new Token(parseInt(patientId));
+			token._getTokenRefFromPatientId().once("value", function(data) {
+				if(data.val()) {
+					const listOfValues = data.val();
+					const listOfKeys = Object.keys(listOfValues);
+					resolve({
+						listOfTokens : listOfKeys
+					});
+				}
+				else {
+					reject();
+				}
+			});
+		});
+		return getValidListFromPatientId;
 	}
 };

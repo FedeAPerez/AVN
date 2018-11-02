@@ -47,14 +47,41 @@ module.exports = {
                 "head": {
                     "route": "token",
                     "operation": "GET_VALID",
-                    "status_code": 200,
+                    "status_code": 500,
                 },
                 "data": {
                     "isValid": false
                 }
             });
-            
-        next();
+            next();
+        });
+    },
+
+    getListOfValidTokenByPatient: function(req, res, next) {
+        tokenService.validListTokenFromPatientId(req.params.idPatient)
+        .then((result) => {
+            res.send({
+                "head": {
+                    "route": "token",
+                    "operation": "GET_VALID_LIST",
+                    "status_code": 200,
+                },
+                "data": result
+            });  
+            next();
+        })  
+        .catch((err) => {
+            res.send({
+                "head": {
+                    "route": "token",
+                    "operation": "GET_VALID_LIST",
+                    "status_code": 500,
+                },
+                "data": {
+                    "notFound": true
+                }
+            });
+            next();
         });
     }
 };
