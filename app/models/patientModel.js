@@ -5,7 +5,7 @@ var Patient = function(patientId) {
     this._patientId = patientId;
 
     this._getPatientRefFromPatientId = function() {
-        // Devuelve la referencia general del token
+        // genera la referencia general del paciente
         let ref = database.ref('patient/' + this._patientId);
         return ref;
     };
