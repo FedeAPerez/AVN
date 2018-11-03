@@ -26,6 +26,9 @@
     "moment": "^2.22.2"
   },
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "nyc": "^13.1.0"
   }
 }
