@@ -6,7 +6,11 @@ module.exports = {
         res.locals.guid = crypto.randomBytes(16).toString("hex");
         res.locals.beginDate = new Date();
         console.log("Request received in route [" + req.path + " - " + req.method + "] from Id [" + res.locals.guid + "]");
+        try {
         next();
+        } catch(err) {
+            console.error(err);
+        }
     },
     finishRequest: function(req, res, next) {
         var finishDate = new Date();
