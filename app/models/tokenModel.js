@@ -51,7 +51,7 @@ var Token = function(patientId) {
                 reject();
             }
             else {
-                resolve ();
+                resolve();
             }
         });
     };

@@ -8,7 +8,7 @@ module.exports = {
 			token._getTokenRefFromPatientId().once("value", function(data) {
 				token._selectStrattegyToAddFromData(data);
 				token._createToken( 
-					function(patient, session) {
+					function() {
 						resolve({
 							"token": token._patientId + "_" + token._newSessionId
 						});

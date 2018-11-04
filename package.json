@@ -4,9 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "SET SHOULDNT_LOG_METRICS=true && SET IS_AUTH_ENABLED=false && nyc --all --reporter=html mocha --recursive --exit",
+    "test": "SET IS_AUTH_ENABLED=false && nyc --all --reporter=html mocha --recursive --exit",
     "start": "nodemon server.js",
-    "startdev": "SET AUTH_KEY=ataxicos && SET PORT=5757 && SET IS_AUTH_ENABLED=false && nodemon server.js --inspect=5757"
+    "startdev": "SET AUTH_KEY=ataxicos && SET PORT=5757 && SET IS_AUTH_ENABLED=false && nodemon --inspect server.js"
   },
   "repository": {
     "type": "git",
