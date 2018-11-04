@@ -25,7 +25,7 @@ module.exports = {
             next();
         })  
         .catch((err) => {
-            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(TOKEN_ROUTE, HTTP_METHOD.GET, HTTP_CODE.ERROR, result));
+            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(TOKEN_ROUTE, HTTP_METHOD.GET, HTTP_CODE.ERROR));
             next();
         });
     },
