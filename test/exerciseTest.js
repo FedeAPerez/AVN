@@ -16,7 +16,9 @@ describe('Exercise', function() {
             .send({
                 difficulty : "Principiante",
                 name: "Analítico",
-                description: "Es un ejercicio de movimiento simple, ideal para las primeras sesiones de rehabilitación"
+                description: "Es un ejercicio de movimiento simple, ideal para las primeras sesiones de rehabilitación",
+                initialState : "A123B123C23D23",
+                endingState : "A23B1233D23"
             })
             .expect('Content-Type', /json/)
             .expect(200)
@@ -33,7 +35,9 @@ describe('Exercise', function() {
             .send({
                 difficulty : "Intermedio",
                 name: "Global",
-                description: "Es un ejercicio de movimiento completo que no contiene una carga extra."
+                description: "Es un ejercicio de movimiento completo que no contiene una carga extra.",
+                initialState : "A123B123C23D23",
+                endingState : "A23B1233D23"
             })
             .expect('Content-Type', /json/)
             .expect(200)
@@ -44,7 +48,7 @@ describe('Exercise', function() {
         });
 
 
-        it('400 - Debe fallar el req difficulty faltante', function(done) {
+        it('400 - Debe fallar el req difficulty faltante y objetos inicial y final', function(done) {
             request(app)
             .post('/exercise')
             .set('Accept', 'application/json')
