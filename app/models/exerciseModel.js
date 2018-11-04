@@ -33,7 +33,7 @@ var Exercise = function() {
     this._updateExercise = function(exId, exObject, resolve, reject) {
         let ref = database.ref('exercise/'+exId);
         ref.update({
-            exObject
+            exercise : exObject
         }, function(err) {
             if(err) {
                 reject(err);
