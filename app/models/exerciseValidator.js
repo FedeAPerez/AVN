@@ -14,7 +14,7 @@ module.exports = {
             });
         }
         else {
-            if([1, 2, 3].indexOf(parseInt(req.body.difficulty)) === -1) {
+            if([1, 2, 3, 4, 5].indexOf(parseInt(req.body.difficulty)) === -1) {
                 validatorObj.error = true;
                 validatorObj.description.push({
                     desc: "La dificultad del ejercicio debe ser alguna de las siguientes [1, 2, 3]",

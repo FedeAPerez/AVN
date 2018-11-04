@@ -19,7 +19,7 @@ var Exercise = function() {
     this._createExercise = function(exObject, resolve, reject) {
         let ref = database.ref('exercise/').push();
         ref.set({
-            exObject
+            exercise: exObject
         }, function(err) {
             if(err) {
                 reject(err);
