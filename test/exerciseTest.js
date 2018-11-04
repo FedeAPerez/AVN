@@ -6,7 +6,8 @@ chai.should();
 const firebase  = require('../config/firebase');
 firebase.init();
 const app       = require('../config/app');
-
+let exerciseId;
+let updatedExerciseId;
 describe('Exercise', function() {
     describe('POST', function() {
         it('200 - Debe aceptar el req con todos los datos correctos', function(done) {
@@ -14,7 +15,7 @@ describe('Exercise', function() {
             .post('/exercise')
             .set('Accept', 'application/json')
             .send({
-                difficulty : "Principiante",
+                difficulty : "1",
                 name: "Analítico",
                 description: "Es un ejercicio de movimiento simple, ideal para las primeras sesiones de rehabilitación",
                 initialState : "A123B123C23D23",
@@ -22,7 +23,8 @@ describe('Exercise', function() {
             })
             .expect('Content-Type', /json/)
             .expect(200)
-            .end((err) => {
+            .end((err, res) => {
+                exerciseId = res.body.data.exerciseId;
                 if (err) return done(err);
                 done();
             });
@@ -33,15 +35,16 @@ describe('Exercise', function() {
             .post('/exercise')
             .set('Accept', 'application/json')
             .send({
-                difficulty : "Intermedio",
+                difficulty : "2",
                 name: "Global",
                 description: "Es un ejercicio de movimiento completo que no contiene una carga extra.",
-                initialState : "A123B123C23D23",
-                endingState : "A23B1233D23"
+                initialState : "090120040020",
+                endingState : "090120040020"
             })
             .expect('Content-Type', /json/)
             .expect(200)
-            .end((err) => {
+            .end((err, res ) => {
+                updatedExerciseId = res.body.data.exerciseId;
                 if (err) return done(err);
                 done();
             });
@@ -58,6 +61,41 @@ describe('Exercise', function() {
             })
             .expect('Content-Type', /json/)
             .expect(400)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+            });
+        });
+    });
+
+    describe("DELETE", function() {
+        it("200 - debe eliminar la ref que fue creada", function(done) {
+            request(app)
+            .delete('/exercise/'+exerciseId)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+            });
+        });
+    });
+
+    describe("PUT", function() {
+        it("200 - debe modificar segun el id creado", function(done) {
+            request(app)
+            .put('/exercise/'+updatedExerciseId)
+            .set('Accept', 'application/json')
+            .send({
+                difficulty : "2",
+                name: "Global",
+                description: "Es un ejercicio de movimiento completo que no contiene una carga extra. Ideal para cuando se completaron varias sesiones.",
+                initialState : "090120040020",
+                endingState : "090120040020"
+            })
+            .expect('Content-Type', /json/)
+            .expect(200)
             .end((err) => {
                 if (err) return done(err);
                 done();

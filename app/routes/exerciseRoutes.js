@@ -1,6 +1,7 @@
 const exerciseController = require("../controllers/exerciseController");
 
 module.exports = function(app) {
-    app.get('/exercise/difficulty/:idDifficulty', exerciseController.getExerciseByDifficulty);
+    app.delete('/exercise/:idExercise', exerciseController.deleteExercise);
     app.post('/exercise', exerciseController.createExercise);
+    app.put('/exercise/:idExercise', exerciseController.updateExercise);
 };

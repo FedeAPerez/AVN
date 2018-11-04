@@ -1,5 +1,5 @@
 module.exports = {
-    validated: function(req) {
+    validatedCreate: function(req, shouldIgnore = false) {
         let validatorObj = {
             error : false,
             description : []
@@ -12,6 +12,15 @@ module.exports = {
                 desc: "Falta la dificultad del ejercicio.",
                 paramNeeded: "difficulty" 
             });
+        }
+        else {
+            if([1, 2, 3].indexOf(parseInt(req.body.difficulty)) === -1) {
+                validatorObj.error = true;
+                validatorObj.description.push({
+                    desc: "La dificultad del ejercicio debe ser alguna de las siguientes [1, 2, 3]",
+                    paramNeeded: "difficulty" 
+                });
+            }
         }
 
         // Nombre
@@ -40,7 +49,13 @@ module.exports = {
                 paramNeeded: "endingState" 
             });
         }
-
+        if(shouldIgnore) {
+            validatorObj.error = false;
+        }
         return validatorObj;
+    },
+
+    validateUpdate : function(req) {
+        return this.validatedCreate(req, false)
     }
 };

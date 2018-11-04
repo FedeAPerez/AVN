@@ -7,7 +7,8 @@ const HTTP_CODE = {
 const HTTP_METHOD = {
     DELETE: "DELETE",
     GET: "GET",
-    POST: "POST"
+    POST: "POST",
+    PUT: "PUST"
 };
 
 function _constructHttpResponse(route, method, code, res) {
