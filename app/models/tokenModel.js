@@ -43,9 +43,11 @@ var Token = function(patientId) {
         }
     }
 
-    this._createToken = function(resolve, reject) {
+    this._createToken = function(idExercise, repetitions, resolve, reject) {
         this._newReference.set({
-            validated : false
+            validated: false,
+            idExercise: idExercise, 
+            repetitions: repetitions
         }).then(function(error) {
             if(error) {
                 reject();

@@ -2,12 +2,12 @@ const Token = require('../models/tokenModel');
 const Patient = require('../models/patientModel');
 
 module.exports = {
-	createTokenFromPatient: function(patientId) {
+	createTokenFromPatient: function(patientId, exerciseId, repetitions) {
 		var createTokenFromPatientPromise = new Promise (function (resolve, reject) {
 			var token = new Token(patientId);
 			token._getTokenRefFromPatientId().once("value", function(data) {
 				token._selectStrattegyToAddFromData(data);
-				token._createToken( 
+				token._createToken(exerciseId, repetitions,
 					function() {
 						resolve({
 							"token": token._patientId + "_" + token._newSessionId

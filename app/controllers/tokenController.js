@@ -7,7 +7,7 @@ const tokenService = require('../services/tokenService');
 module.exports = {
 
     createToken: function(req, res, next) {
-        tokenService.createTokenFromPatient(req.body.patientId)
+        tokenService.createTokenFromPatient(req.body.patientId, req.body.exerciseId, req.body.repetitions)
         .then((result) => {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(TOKEN_ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK, result));
             next();
