@@ -53,14 +53,13 @@ module.exports = {
     deleteExercise: function(idExercise) {
         var deleteExercisePromise = new Promise(function(resolve, reject) {
             var exercise = new Exercise();
-            exercise._getExerciseRefFromExerciseId(idExercise).remove(function(error) {
-                if(error) {
-                    reject();
-                }
-                else {
+            exercise._deleteExercise(idExercise,
+                function() {
                     resolve();
-                }
-            });
+                },
+                function() {
+                    reject();
+                });
         });
 		return deleteExercisePromise;
     }

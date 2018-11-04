@@ -102,4 +102,18 @@ describe('Exercise', function() {
             });
         });
     });
+
+    describe("GET", function() {
+        it("200 - Debería devolver un listado de todos los ejercicios", function(done) {
+            request(app)
+            .get('/exercise')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+            });
+        });
+    });
 });

@@ -43,6 +43,18 @@ var Exercise = function() {
             }
         });
     }
+
+    this._deleteExercise = function(exId, resolve, reject) {
+        let ref = database.ref('exercise/'+exId);
+        ref.remove(function(err) {
+            if(err) {
+                reject(err);
+            }
+            else {
+                resolve();
+            }
+        });
+    }
 };
 
 
