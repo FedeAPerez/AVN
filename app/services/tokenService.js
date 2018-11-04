@@ -1,5 +1,6 @@
 const Token = require('../models/tokenModel');
 const Patient = require('../models/patientModel');
+const Exercise = require('../models/exerciseModel');
 
 module.exports = {
 	createTokenFromPatient: function(patientId, exerciseId, repetitions) {
@@ -30,17 +31,32 @@ module.exports = {
 			const tokenValueReg = tokenValue.split('_');
 			const possibleTokenPatientId = tokenValueReg[0];
 			const possibleTokenSession = tokenValueReg[1];
+			response = {
+				patient : null,
+				isValid : false,
+				exercise : null,
+				repetitions : 1
+			};
 			
 			var token = new Token(parseInt(possibleTokenPatientId));
 			token._getTokenSessionRefFromSessionId(possibleTokenSession).once("value", function(data) {
 				if(data.val()) {
+					response.repetitions = data.val().repetitions;
+					let idExercise = data.val().idExercise;
 					var patient = new Patient(parseInt(possibleTokenPatientId));
 					patient._getPatientRefFromPatientId().once("value", function(data) {
 						if(data.val()) {
-							resolve({
-								isValid: true,
-								patient: data.val()
-							})
+							response.patient = data.val();
+							response.isValid = true;
+							var exercise = new Exercise();
+							exercise._getByExerciseId(idExercise,
+								function(exer) {
+									response.exercise = exer;
+									resolve(response);
+								},
+								function() {
+									reject();
+							});
 						}
 						else {
 							reject({

@@ -6,12 +6,32 @@ chai.should();
 const firebase  = require('../config/firebase');
 firebase.init();
 const app       = require('../config/app');
-
+let token;
 describe('Token', function() {
+  describe('POST', function() {
+    it('200 for POST', function(done) {
+        request(app)
+        .post('/token')
+        .set('Accept', 'application/json')
+        .send({
+            patientId: "38662776",
+            exerciseId: "-LQUiKmajaabuPp8rz50",
+            repetitions: 3
+        })
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end((err, res ) => {
+          token = res.body.data.token;
+          if (err) return done(err);
+          done();
+        });
+    });
+
+  });
   describe('GET', function() {
     it('200', function(done) {
       request(app)
-      .get('/token/38662776_1')
+      .get('/token/'+token)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
@@ -38,24 +58,6 @@ describe('Token', function() {
 
   });
 
-  describe('POST', function() {
-    it('200 for POST', function(done) {
-        request(app)
-        .post('/token')
-        .set('Accept', 'application/json')
-        .send({
-            patientId: "38662776",
-            exerciseId: "-LQUiKmajaabuPp8rz50",
-            repetitions: 3
-        })
-        .expect('Content-Type', /json/)
-        .expect(200)
-        .end((err) => {
-          if (err) return done(err);
-          done();
-        });
-    });
 
-  });
 
 });

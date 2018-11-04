@@ -16,6 +16,18 @@ var Exercise = function() {
         });
     };
 
+    this._getByExerciseId = function(exerciseId, resolve, reject) {
+        let ref = database.ref('exercise/').child(exerciseId);
+        ref.once("value", function(data) {
+            if(data.val()) {
+                resolve(data.val().exercise);
+            }
+            else {
+                reject();
+            }
+        });
+    };
+
     this._createExercise = function(exObject, resolve, reject) {
         let ref = database.ref('exercise/').push();
         ref.set({
