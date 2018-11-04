@@ -13,11 +13,9 @@ const HTTP_METHOD = {
 
 function _constructHttpResponse(route, method, code, res) {
     const head = {
-        "head": {
-            "route": route,
-            "operation": method,
-            "status_code": code,
-        }
+        "route": route,
+        "operation": method,
+        "status_code": code,
     };
     return({ head, data : res ? res : null});
 }
