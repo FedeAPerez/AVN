@@ -1,0 +1,8 @@
+// Nombre de ruta
+const BLANK_ROUTE ="/blank";
+// HTTP Utils
+const HTTP_CODE = require('../builder/httpBuilder').HTTP_CODE;
+const HTTP_METHOD = require('../builder/httpBuilder').HTTP_METHOD;
+const httpBuilder = require('../builder/httpBuilder');
+// Service a consumir
+const blank = require('../services/blank');

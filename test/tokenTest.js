@@ -1,7 +1,6 @@
 // Librerías de 3ros
 const request   = require('supertest');
 const chai      = require('chai');
-const expect    = chai.expect();
 chai.should();
 // Librerías propias y enlaces de configuración
 const firebase  = require('../config/firebase');
@@ -13,6 +12,21 @@ describe('Token', function() {
     it('200', function(done) {
       request(app)
       .get('/token/38662776_1')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end((err) => {
+        if (err) return done(err);
+        done();
+      });
+    });
+
+  });
+
+  describe('GET LIST', function() {
+    it('200', function(done) {
+      request(app)
+      .get('/token/list/38662776')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)

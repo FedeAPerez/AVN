@@ -1,7 +1,8 @@
 const HTTP_CODE = {
     OK: 200,
     ERROR: 500,
-    NOT_FOUND: 404
+    NOT_FOUND: 404,
+    BAD_REQUEST: 400
 };
 const HTTP_METHOD = {
     DELETE: "DELETE",

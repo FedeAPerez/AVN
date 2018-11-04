@@ -7,12 +7,16 @@ const firebase  = require('../config/firebase');
 firebase.init();
 const app       = require('../config/app');
 
-describe('Home', function() {
-    describe('GET', function() {
+describe('Session', function() {
+    describe('POST', function() {
         it('200', function(done) {
         request(app)
-        .get('/')
+        .post('/session')
         .set('Accept', 'application/json')
+        .send([
+            {Token: "9999999_0",
+            Ejercicio: 3}
+        ])
         .expect('Content-Type', /json/)
         .expect(200)
         .end((err) => {

@@ -1,7 +1,6 @@
 // Librerías de 3ros
 const request   = require('supertest');
 const chai      = require('chai');
-const expect    = chai.expect();
 chai.should();
 // Librerías propias y enlaces de configuración
 const firebase  = require('../config/firebase');

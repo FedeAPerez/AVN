@@ -10,7 +10,7 @@ module.exports = {
 				token._createToken( 
 					function(patient, session) {
 						resolve({
-							tokenNumber: token._patientId + "_" + token._newSessionId
+							"token": token._patientId + "_" + token._newSessionId
 						});
 					}, 
 					function() {
@@ -43,7 +43,9 @@ module.exports = {
 							})
 						}
 						else {
-							reject();
+							reject({
+								isValid: false
+							});
 						}
 					})
 				}
