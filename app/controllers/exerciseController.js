@@ -57,5 +57,17 @@ module.exports = {
             res.status(HTTP_CODE.BAD_REQUEST).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.BAD_REQUEST, validator));
             next();
         }
+    },
+
+    getAllExercises: function(req, res, next) {
+        exerciseService.getAllExercises()
+        .then((result) => {
+            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.GET, HTTP_CODE.OK, result));
+            next();
+        })
+        .catch((err) => {
+            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.GET, HTTP_CODE.ERROR));
+            next();
+        });
     }
 };

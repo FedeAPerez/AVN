@@ -1,6 +1,22 @@
 const Exercise = require('../models/exerciseModel');
 
 module.exports = {
+    getAllExercises: function() {
+        var getAllExercisesPromise = new Promise(function(resolve, reject) {
+            var exercise = new Exercise();
+            exercise._getAll(
+                function(list){
+                    resolve({
+                        exercisesList : list
+                    });
+                },
+                function(err) {
+                    reject(err);
+                });
+        });
+
+        return getAllExercisesPromise;
+    },
     createExercise: function(exerciseData) {
         var createExercisePromise = new Promise(function(resolve, reject) {
             var exercise = new Exercise();

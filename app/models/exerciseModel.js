@@ -4,11 +4,16 @@ const database = firebase.database();
 var Exercise = function() {
     this.exerciseId;
 
-    this._getExerciseRefFromExerciseId = function(exerciseId) {
-        // genera la referencia general del ejercicio
-        this.exerciseId = exerciseId;
-        let ref = database.ref('exercise/').child(exerciseId);
-        return ref;
+    this._getAll = function(resolve, reject) {
+        let ref = database.ref('exercise/');
+        ref.once("value", function(data) {
+            if(data.val()) {
+                resolve(data.val());
+            }
+            else {
+                reject();
+            }
+        });
     };
 
     this._createExercise = function(exObject, resolve, reject) {
