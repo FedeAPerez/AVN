@@ -50,6 +50,7 @@ var Token = function(patientId) {
             repetitions: repetitions
         }).then(function(error) {
             if(error) {
+                console.log(error);
                 reject();
             }
             else {
