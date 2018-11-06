@@ -16,6 +16,18 @@ module.exports = {
             next();
         });
     },
+
+    updatePatient: function(req, res, next) {
+        patientService.updatePatient(req.params.patientId, req.body)
+        .then((result) => {
+            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.OK, result));
+            next();
+        })  
+        .catch((err) => {
+            res.status(HTTP_CODE.NOT_FOUND).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.NOT_FOUND));    
+            next();
+        });
+    },
     
     deletePatient: function(req, res, next) {
         patientService.deletePatient(req.params.patientId)
