@@ -9,6 +9,18 @@ var Patient = function(patientId) {
         let ref = database.ref('patient/' + this._patientId);
         return ref;
     };
+
+    this._getAll = function(resolve, reject) {
+        let ref = database.ref('patient/');
+        ref.once("value", function(data) {
+            if(data.val()) {
+                resolve(data.val());
+            }
+            else {
+                reject();
+            }
+        });
+    }
 };
 
 

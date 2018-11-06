@@ -5,6 +5,18 @@ const httpBuilder = require('../builder/httpBuilder');
 const patientService = require('../services/patientService');
 
 module.exports = {
+    getAllPatients: function(req, res, next) {
+        patientService.getAllPatients()
+        .then((result) => {
+            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.GET, HTTP_CODE.OK, result));
+            next();
+        })  
+        .catch((err) => {
+            res.status(HTTP_CODE.NOT_FOUND).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.GET, HTTP_CODE.NOT_FOUND));    
+            next();
+        });
+    },
+
     getPatient: function(req, res, next) {
         patientService.getPatient(req.params.patientId)
         .then((result) => {

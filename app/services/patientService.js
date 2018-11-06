@@ -1,6 +1,23 @@
 const Patient = require('../models/patientModel');
 
 module.exports = {
+	getAllPatients: function() {
+        var getAllPatientsPromise = new Promise(function(resolve, reject) {
+            var patient = new Patient();
+            patient._getAll(
+                function(list){
+                    resolve({
+                        patientsList : list
+                    });
+                },
+                function(err) {
+                    reject(err);
+                });
+        });
+
+        return getAllPatientsPromise;
+	},
+
 	getPatient: function(patientId) {
 		var getPatientPromise = new Promise(function(resolve, reject) {
 			var patient = new Patient(parseInt(patientId));
