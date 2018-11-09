@@ -5,8 +5,8 @@ const httpBuilder = require('../builder/httpBuilder');
 const sessionService = require('../services/sessionService');
 
 module.exports = {
-    getReportByPatientId: function(req, res, next) {
-        sessionService.getReportByPatientId(req.params.patientId)
+    getReportOfPatients: function(req, res, next) {
+        sessionService.getReportOfPatients()
         .then((result) => {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.GET, HTTP_CODE.OK, result));
             next();

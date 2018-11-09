@@ -19,5 +19,17 @@ module.exports = {
 			}
 		});
 
+	},
+	getReportOfPatients: function() {
+		return new Promise(function(resolve, reject) {
+			resolve({
+				listOfStats : [
+					{ name: "Federico Pérez", adjustmentsLess: 65, exercisesMade: 24, sessionsMade: 12, daysInProgram: 120 },
+					{ name: "Gabriel Bonaventura", adjustmentsLess: 13, exercisesMade: 10, sessionsMade: 4, daysInProgram: 30 },
+					{ name: "Ariel Molina", adjustmentsLess: 5, exercisesMade: 2, sessionsMade: 1, daysInProgram: 10 }
+				]
+			});
+		});
 	}
+
 };
