@@ -59,14 +59,16 @@ module.exports = {
 							});
 						}
 						else {
-							reject({
+							resolve({
 								isValid: false
 							});
 						}
 					})
 				}
 				else {
-					reject();
+					resolve({
+						isValid: false
+					});
 				}
 			});
 		});
