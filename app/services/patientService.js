@@ -1,6 +1,21 @@
 const Patient = require('../models/patientModel');
 
 module.exports = {
+	addCommentToPatient: function(patientId, comment) {
+		var addCommentToPatientPromise = new Promise(function(resolve, reject) {
+			var patient = new Patient(parseInt(patientId));
+			patient._updateComment(comment,
+			function(){
+				resolve();
+			},
+			function(err) {
+				reject(err);
+			});
+		});
+
+		return addCommentToPatientPromise;
+	},
+
 	getAllPatients: function() {
         var getAllPatientsPromise = new Promise(function(resolve, reject) {
             var patient = new Patient();
@@ -37,6 +52,7 @@ module.exports = {
 
 		return getPatientPromise;
 	},
+
 	updatePatient: function(patientId) {
 		var updatePatientPromise = new Promise(function(resolve, reject) {
 			resolve();
@@ -44,6 +60,7 @@ module.exports = {
 
 		return updatePatientPromise;
 	},
+
 	deletePatient: function(patientId) {
 		var deletePatientPromise = new Promise(function(resolve, reject) {
 			var patient = new Patient(parseInt(patientId));

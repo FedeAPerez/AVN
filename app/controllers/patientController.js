@@ -5,6 +5,18 @@ const httpBuilder = require('../builder/httpBuilder');
 const patientService = require('../services/patientService');
 
 module.exports = {
+    addComment: function(req, res, next) {
+        patientService.addCommentToPatient(req.params.patientId, req.body.comentario)
+        .then((result) => {
+            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK, result));
+            next();
+        })  
+        .catch((err) => {
+            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.POST, HTTP_CODE.ERROR));    
+            next();
+        });
+    },
+    
     getAllPatients: function(req, res, next) {
         patientService.getAllPatients()
         .then((result) => {

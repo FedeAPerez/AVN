@@ -18,8 +18,8 @@ describe('Exercise', function() {
                 difficulty : "1",
                 name: "Analítico",
                 description: "Es un ejercicio de movimiento simple, ideal para las primeras sesiones de rehabilitación",
-                initialState : "A123B123C23D23",
-                endingState : "A23B1233D23"
+                initialState : "090120040020",
+                endingState : "090120040020"
             })
             .expect('Content-Type', /json/)
             .expect(200)

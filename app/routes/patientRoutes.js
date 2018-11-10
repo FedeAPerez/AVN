@@ -5,4 +5,5 @@ module.exports = function(app) {
 	app.get('/patient', patientController.getAllPatients);
 	app.put('/patient/:patientId', patientController.updatePatient);
 	app.delete('/patient/:patientId', patientController.deletePatient);
+	app.post('/patient/:patientId/comment', patientController.addComment);
 };

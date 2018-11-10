@@ -10,6 +10,18 @@ var Patient = function(patientId) {
         return ref;
     };
 
+    this._updateComment = function(comment, resolve, reject) {
+        let ref = database.ref('patient/' + this._patientId + '/comment');
+        ref.set(comment, function(err) {
+            if(err) {
+                reject(err);
+            }
+            else {
+                resolve(ref.key);
+            }
+        });
+    }
+
     this._getAll = function(resolve, reject) {
         let ref = database.ref('patient/');
         ref.once("value", function(data) {
