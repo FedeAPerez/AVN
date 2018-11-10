@@ -16,5 +16,5 @@ module.exports = {
             res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(SESSION_ROUTE, HTTP_METHOD.POST, HTTP_CODE.ERROR));
             next();
         });
-    },
+    }
 };

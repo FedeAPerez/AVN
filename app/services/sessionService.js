@@ -1,5 +1,11 @@
 const firebase = require('firebase-admin');
 const database = firebase.database();
+// Modelos
+const Patient = require('../models/patientModel');
+const Session = require('../models/sessionModel');
+// Helpers
+const PatientHelper = require('../helpers/patientHelper');
+const ReportHelper = require('../helpers/reportHelper');
 
 module.exports = {
 	saveData: function(data) {
@@ -20,15 +26,24 @@ module.exports = {
 		});
 
 	},
+
 	getReportOfPatients: function() {
 		return new Promise(function(resolve, reject) {
-			resolve({
-				listOfStats : [
-					{ name: "Federico Pérez", adjustmentsLess: 65, exercisesMade: 24, sessionsMade: 12, daysInProgram: 120 },
-					{ name: "Gabriel Bonaventura", adjustmentsLess: 13, exercisesMade: 10, sessionsMade: 4, daysInProgram: 30 },
-					{ name: "Ariel Molina", adjustmentsLess: 5, exercisesMade: 2, sessionsMade: 1, daysInProgram: 10 }
-				]
-			});
+			let patientModel = new Patient();
+			patientModel._getAll(function(res) {
+				let listOfPatients = PatientHelper.fromListOfPatientsToBasicData(res);
+				let sessionModel = new Session();
+				sessionModel._getAllFilteredByPatient(listOfPatients, function(data) {
+					let listOfSessionsByIdPatient = ReportHelper.fromListToReport(data);
+					let listOfSessionsInReport = ReportHelper.completeListWithData(listOfSessionsByIdPatient, listOfPatients);
+					console.log(listOfSessionsInReport);
+					resolve({
+						listOfStats : listOfSessionsInReport
+					});
+				}, function(err) {
+					console.log("no encontró data de sessiones");
+				})
+			})
 		});
 	}
 

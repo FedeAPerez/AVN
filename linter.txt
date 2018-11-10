@@ -1,0 +1,81 @@
+
+D:\Projects\AtaxiaProj\AVN\app\builder\httpBuilder.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\controllers\authController.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\controllers\exerciseController.js
+  2:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\controllers\homeController.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\controllers\metricsController.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\controllers\patientController.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\controllers\reportController.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\controllers\sessionController.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\controllers\tokenController.js
+  2:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\models\exerciseModel.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\models\exerciseValidator.js
+  2:49  error  Parsing error: Unexpected token =
+
+D:\Projects\AtaxiaProj\AVN\app\models\patientModel.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\models\tokenModel.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\models\tokenValidator.js
+  2:49  error  Parsing error: Unexpected token =
+
+D:\Projects\AtaxiaProj\AVN\app\routes\exerciseRoutes.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\routes\homeRoutes.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\routes\index.js
+  2:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\routes\patientRoutes.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\routes\reportRoutes.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\routes\sessionRoutes.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\routes\tokenRoutes.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\services\exerciseService.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\services\interactionService.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\services\patientService.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\services\sessionService.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+D:\Projects\AtaxiaProj\AVN\app\services\tokenService.js
+  1:1  error  Parsing error: The keyword 'const' is reserved
+
+✖ 26 problems (26 errors, 0 warnings)
+
