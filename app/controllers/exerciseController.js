@@ -15,7 +15,7 @@ module.exports = {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.DELETE, HTTP_CODE.OK));
             next();
         })
-        .catch((err) => {
+        .catch(() => {
             res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.DELETE, HTTP_CODE.ERROR));
             next();
         });
@@ -29,7 +29,7 @@ module.exports = {
                 res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK, result));
                 next();
             })
-            .catch((err) => {
+            .catch(() => {
                 res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.POST, HTTP_CODE.ERROR));
                 next();
             });
@@ -48,7 +48,7 @@ module.exports = {
                 res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.OK, result));
                 next();
             })
-            .catch((err) => {
+            .catch(() => {
                 res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.ERROR));
                 next();
             });
@@ -65,7 +65,7 @@ module.exports = {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.GET, HTTP_CODE.OK, result));
             next();
         })
-        .catch((err) => {
+        .catch(() => {
             res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.GET, HTTP_CODE.ERROR));
             next();
         });

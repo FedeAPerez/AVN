@@ -1,81 +1,57 @@
 
-D:\Projects\AtaxiaProj\AVN\app\builder\httpBuilder.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\controllers\authController.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
 D:\Projects\AtaxiaProj\AVN\app\controllers\exerciseController.js
-  2:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\controllers\homeController.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  14:16  error  'result' is defined but never used  no-unused-vars
 
 D:\Projects\AtaxiaProj\AVN\app\controllers\metricsController.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\controllers\patientController.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+   8:9  error  Unexpected console statement  no-console
+  14:9  error  Unexpected console statement  no-console
 
 D:\Projects\AtaxiaProj\AVN\app\controllers\reportController.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  14:17  error  'err' is defined but never used  no-unused-vars
 
 D:\Projects\AtaxiaProj\AVN\app\controllers\sessionController.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  11:16  error  'result' is defined but never used  no-unused-vars
+  15:17  error  'err' is defined but never used     no-unused-vars
 
 D:\Projects\AtaxiaProj\AVN\app\controllers\tokenController.js
-  2:1  error  Parsing error: The keyword 'const' is reserved
+  21:21  error  'err' is defined but never used  no-unused-vars
+  38:17  error  'err' is defined but never used  no-unused-vars
+  50:17  error  'err' is defined but never used  no-unused-vars
 
-D:\Projects\AtaxiaProj\AVN\app\models\exerciseModel.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\models\exerciseValidator.js
-  2:49  error  Parsing error: Unexpected token =
-
-D:\Projects\AtaxiaProj\AVN\app\models\patientModel.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+D:\Projects\AtaxiaProj\AVN\app\helpers\reportHelper.js
+  20:17  error  'session' is not defined  no-undef
+  21:20  error  'session' is not defined  no-undef
+  24:42  error  'session' is not defined  no-undef
 
 D:\Projects\AtaxiaProj\AVN\app\models\tokenModel.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  53:17  error  Unexpected console statement  no-console
 
 D:\Projects\AtaxiaProj\AVN\app\models\tokenValidator.js
-  2:49  error  Parsing error: Unexpected token =
-
-D:\Projects\AtaxiaProj\AVN\app\routes\exerciseRoutes.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\routes\homeRoutes.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\routes\index.js
-  2:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\routes\patientRoutes.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\routes\reportRoutes.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\routes\sessionRoutes.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\routes\tokenRoutes.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
-
-D:\Projects\AtaxiaProj\AVN\app\services\exerciseService.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  2:36  error  'shouldIgnore' is assigned a value but never used  no-unused-vars
 
 D:\Projects\AtaxiaProj\AVN\app\services\interactionService.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  20:5   error  Unexpected console statement  no-console
+  21:17  error  Unexpected console statement  no-console
 
 D:\Projects\AtaxiaProj\AVN\app\services\patientService.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  56:26  error  'patientId' is defined but never used  no-unused-vars
+  57:60  error  'reject' is defined but never used     no-unused-vars
 
 D:\Projects\AtaxiaProj\AVN\app\services\sessionService.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  22:5   error  Unexpected console statement        no-console
+  23:5   error  Unexpected console statement        no-console
+  31:40  error  'reject' is defined but never used  no-unused-vars
+  39:6   error  Unexpected console statement        no-console
+  43:17  error  'err' is defined but never used     no-unused-vars
+  44:6   error  Unexpected console statement        no-console
 
 D:\Projects\AtaxiaProj\AVN\app\services\tokenService.js
-  1:1  error  Parsing error: The keyword 'const' is reserved
+  34:4   error  'response' is not defined  no-undef
+  44:6   error  'response' is not defined  no-undef
+  49:8   error  'response' is not defined  no-undef
+  50:8   error  'response' is not defined  no-undef
+  54:10  error  'response' is not defined  no-undef
+  55:18  error  'response' is not defined  no-undef
 
-✖ 26 problems (26 errors, 0 warnings)
+✖ 30 problems (30 errors, 0 warnings)
 

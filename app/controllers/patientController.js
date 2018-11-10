@@ -6,12 +6,12 @@ const patientService = require('../services/patientService');
 
 module.exports = {
     addComment: function(req, res, next) {
-        patientService.addCommentToPatient(req.params.patientId, req.body.comentario)
+        patientService.addCommentToPatient(req.params.patientId, req.body.comment)
         .then((result) => {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK, result));
             next();
         })  
-        .catch((err) => {
+        .catch(() => {
             res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.POST, HTTP_CODE.ERROR));    
             next();
         });
@@ -23,7 +23,7 @@ module.exports = {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.GET, HTTP_CODE.OK, result));
             next();
         })  
-        .catch((err) => {
+        .catch(() => {
             res.status(HTTP_CODE.NOT_FOUND).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.GET, HTTP_CODE.NOT_FOUND));    
             next();
         });
@@ -35,7 +35,7 @@ module.exports = {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.GET, HTTP_CODE.OK, result));
             next();
         })  
-        .catch((err) => {
+        .catch(() => {
             res.status(HTTP_CODE.NOT_FOUND).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.GET, HTTP_CODE.NOT_FOUND));    
             next();
         });
@@ -47,7 +47,7 @@ module.exports = {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.OK, result));
             next();
         })  
-        .catch((err) => {
+        .catch(() => {
             res.status(HTTP_CODE.NOT_FOUND).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.NOT_FOUND));    
             next();
         });
@@ -59,7 +59,7 @@ module.exports = {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.DELETE, HTTP_CODE.OK, result));
             next();
         })
-        .catch((err) => {
+        .catch(() => {
             res.status(HTTP_CODE.NOT_FOUND).send(httpBuilder.constructHttpResponse(PATIENT_ROUTE, HTTP_METHOD.DELETE, HTTP_CODE.ERROR));
             next();
         });

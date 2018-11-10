@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "linter": "./node_modules/.bin/eslint ./app > linter.txt",
     "test": "SET IS_AUTH_ENABLED=false && nyc --all --reporter=html mocha --recursive --exit",
     "start": "nodemon server.js",
     "startdev": "SET AUTH_KEY=ataxicos && SET PORT=5757 && SET IS_AUTH_ENABLED=false && nodemon --inspect server.js"

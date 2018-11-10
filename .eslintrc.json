@@ -1,5 +1,0 @@
-{
-    "rules" : {
-        "complexity": ["error", { "max": 5 }]
-    }
-}
