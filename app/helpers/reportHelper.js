@@ -2,12 +2,20 @@ const moment = require('moment');
 
 module.exports = {
     fromListToReport(listOfSessions) {
-        let listOfSessionReport = [];
+        let listOfSessionReport = [];                
+        /*const data = [
+            {name: 'Ejercicio 1', uv: 4 },
+            {name: 'Ejercicio 2', uv: 21 },
+            {name: 'Ejercicio 3', uv: 2 },
+            {name: 'Ejercicio 4', uv: 21 },
+            {name: 'Ejercicio 5', uv: 7 }
+        ];*/
         // A nivel de paciente
         listOfSessions.forEach(element => {
             let totalAdjustments = 0;
             let totalExercises = 0;
             let totalSessions = 0;
+            let graphData = [];
             // A nivel de sesion
             for(session in element.sessionsInfo) {
                 if(session) {
@@ -16,6 +24,10 @@ module.exports = {
                     element.sessionsInfo[session].forEach(exercise => {
                         totalExercises++;
                         totalAdjustments += exercise.Desvios;
+                        graphData.push({
+                            name: "Ejercicio " + totalExercises,
+                            uv: exercise.Desvios
+                        });
                     });
                 }
             }
@@ -23,7 +35,8 @@ module.exports = {
                 idPatient: element.idPatient,
                 adjustmentsDetected: totalAdjustments,
                 exercisesMade: totalExercises,
-                sessionsMade: totalSessions
+                sessionsMade: totalSessions,
+                graphData: graphData
             });
         });
         return listOfSessionReport;
