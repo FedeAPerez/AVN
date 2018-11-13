@@ -22,7 +22,7 @@ module.exports = {
             customExercise._getCustom(idExercise, idPatient, 
                 function(data){
                     resolve({
-                        data
+                        exercise: data
                     });
                 },
                 function(err) {
