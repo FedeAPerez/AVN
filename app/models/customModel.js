@@ -6,7 +6,10 @@ var Custom = function() {
     this._createCustom = function(idExercise, idPatient, customObject, resolve, reject) {
         let ref = database.ref('custom/'+idExercise+'/'+idPatient)
         ref.set({
-            exercise: customObject
+            exercise: {
+                intialState: customObject.initialState,
+                endingState: customObject.endingState
+            }
         }, function(err) {
             if(err) {
                 reject(err);
