@@ -27,8 +27,21 @@ module.exports = {
             next();
         }
     },
+
     getCustomByPatient: function(req, res, next) {
         customService.getCustomByPatient(req.params.idExercise, req.params.idPatient)
+        .then((result) => {
+            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK, result));
+            next();
+        })
+        .catch(() => {
+            res.status(HTTP_CODE.NOT_FOUND).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.POST, HTTP_CODE.NOT_FOUND));
+            next();
+        });
+    },
+
+    deleteCustomByPatient: function(req, res, next) {
+        customService.deleteCustomByPatient(req.params.idExercise, req.params.idPatient)
         .then((result) => {
             res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK, result));
             next();

@@ -31,5 +31,20 @@ module.exports = {
         });
 
         return getCustomPromise;
+    },
+
+    deleteCustomByPatient: function(idExercise, idPatient) {
+        var getCustomPromise = new Promise(function(resolve, reject) {
+            var customExercise = new Custom();
+            customExercise._deleteCustom(idExercise, idPatient, 
+                function(){
+                    resolve();
+                },
+                function(err) {
+                    reject(err);
+                });
+        });
+
+        return getCustomPromise;
     }
 };

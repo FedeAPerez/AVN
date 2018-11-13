@@ -29,6 +29,18 @@ var Custom = function() {
         });
     }
 
+    this._deleteCustom = function(idExercise, idPatient, resolve, reject) {
+        let ref = database.ref('custom/'+idExercise+'/'+idPatient)
+        ref.remove(function(err) {
+            if(err) {
+                reject(err);
+            }
+            else {
+                resolve();
+            }
+        });
+    }
+
 };
 
 
