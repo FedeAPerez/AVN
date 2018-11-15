@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "linter": "./node_modules/.bin/eslint ./app > linter.txt",
-    "test": "SET PROJ_URL=https://app-core-6d96d.firebaseio.com && SET FILE_ENV=private_prod.json && SET IS_AUTH_ENABLED=false && nyc --all --reporter=html mocha --recursive --exit",
+    "test": "SET PROJ_URL=https://app-core-6d96d.firebaseio.com && SET FILE_ENV=private.json && SET IS_AUTH_ENABLED=false && nyc --all --reporter=html mocha --recursive --exit",
     "start": "nodemon server.js",
-    "startdev": "SET PROJ_URL=https://avn-env-prod.firebaseio.com && SET FILE_ENV=private_prod.json && SET AUTH_KEY=ataxicos && SET PORT=5757 && SET IS_AUTH_ENABLED=false && nodemon --inspect server.js"
+    "startdev": "SET PROJ_URL=https://app-core-6d96d.firebaseio.com && SET FILE_ENV=private.json && SET AUTH_KEY=ataxicos && SET PORT=5757 && SET IS_AUTH_ENABLED=false && nodemon --inspect server.js"
   },
   "repository": {
     "type": "git",
