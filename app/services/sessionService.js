@@ -63,7 +63,12 @@ module.exports = {
 					console.log("no encontró data de sessiones");
 					reject();
 				})
-			})
+			},
+				function(err) {
+					console.log("no encontró data de pacientes");
+					reject();
+				}
+			)
 		});
 	}
 
