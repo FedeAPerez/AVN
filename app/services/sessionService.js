@@ -27,6 +27,26 @@ module.exports = {
 
 	},
 
+	getSessionByStatus: function(filter) {
+		var getSessionByStatusPromise = new Promise(function(resolve, reject) {
+            let patientModel = new Patient();
+			patientModel._getAll(function(res) {
+				let listOfPatients = PatientHelper.fromListOfPatientsToBasicData(res);
+				let sessionModel = new Session();
+				sessionModel._getAllWithNoPatient(listOfPatients, function(data) {
+					resolve({
+						listOfSessions : data
+					});
+				}, function(err) {
+					console.log("no encontró data de sesiones sin paciente");
+					reject();
+				})
+			})
+        });
+
+        return getSessionByStatusPromise;
+	},
+
 	getReportOfPatients: function() {
 		return new Promise(function(resolve, reject) {
 			let patientModel = new Patient();
@@ -36,12 +56,12 @@ module.exports = {
 				sessionModel._getAllFilteredByPatient(listOfPatients, function(data) {
 					let listOfSessionsByIdPatient = ReportHelper.fromListToReport(data);
 					let listOfSessionsInReport = ReportHelper.completeListWithData(listOfSessionsByIdPatient, listOfPatients);
-					console.log(listOfSessionsInReport);
 					resolve({
 						listOfStats : listOfSessionsInReport
 					});
 				}, function(err) {
 					console.log("no encontró data de sessiones");
+					reject();
 				})
 			})
 		});

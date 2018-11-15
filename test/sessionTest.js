@@ -14,8 +14,10 @@ describe('Session', function() {
         .post('/session')
         .set('Accept', 'application/json')
         .send([
-            {Token: "9999999_0",
-            Ejercicio: 3}
+            {
+                Token: "9999999_0",
+                Ejercicio: 3
+            }
         ])
         .expect('Content-Type', /json/)
         .expect(200)

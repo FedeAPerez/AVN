@@ -11,6 +11,18 @@ describe('Patient', function() {
   describe('GET', function() {
     it('200', function(done) {
       request(app)
+      .get('/patient')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end((err) => {
+        if (err) return done(err);
+        done();
+      });
+    });
+    
+    it('200', function(done) {
+      request(app)
       .get('/patient/38662776')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)

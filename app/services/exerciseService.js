@@ -17,6 +17,7 @@ module.exports = {
 
         return getAllExercisesPromise;
     },
+    
     createExercise: function(exerciseData) {
         var createExercisePromise = new Promise(function(resolve, reject) {
             var exercise = new Exercise();
@@ -33,6 +34,7 @@ module.exports = {
 
         return createExercisePromise;
     },
+    
     updateExercise: function(exerciseId, exerciseData) {
         var updateExercisePromise = new Promise(function(resolve, reject) {
             var exercise = new Exercise();

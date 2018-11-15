@@ -1,5 +1,5 @@
 // Nombre de ruta
-const EXERCISE_ROUTE ="/exercise";
+const ROUTE ="/exercise";
 // HTTP Utils
 const HTTP_CODE = require('../builder/httpBuilder').HTTP_CODE;
 const HTTP_METHOD = require('../builder/httpBuilder').HTTP_METHOD;
@@ -12,11 +12,11 @@ module.exports = {
     deleteExercise: function(req, res, next) {
         exerciseService.deleteExercise(req.params.idExercise)
         .then((result) => {
-            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.DELETE, HTTP_CODE.OK));
+            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.DELETE, HTTP_CODE.OK));
             next();
         })
         .catch(() => {
-            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.DELETE, HTTP_CODE.ERROR));
+            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.DELETE, HTTP_CODE.ERROR));
             next();
         });
     },
@@ -26,16 +26,16 @@ module.exports = {
         if(!validator.error) {
             exerciseService.createExercise(req.body)
             .then((result) => {
-                res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK, result));
+                res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK, result));
                 next();
             })
             .catch(() => {
-                res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.POST, HTTP_CODE.ERROR));
+                res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.POST, HTTP_CODE.ERROR));
                 next();
             });
         }
         else {
-            res.status(HTTP_CODE.BAD_REQUEST).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.POST, HTTP_CODE.BAD_REQUEST, validator));
+            res.status(HTTP_CODE.BAD_REQUEST).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.POST, HTTP_CODE.BAD_REQUEST, validator));
             next();
         }
     },
@@ -45,16 +45,16 @@ module.exports = {
         if(!validator.error) {
             exerciseService.updateExercise(req.params.idExercise, req.body)
             .then((result) => {
-                res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.OK, result));
+                res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.PUT, HTTP_CODE.OK, result));
                 next();
             })
             .catch(() => {
-                res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.ERROR));
+                res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.PUT, HTTP_CODE.ERROR));
                 next();
             });
         }
         else {
-            res.status(HTTP_CODE.BAD_REQUEST).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.PUT, HTTP_CODE.BAD_REQUEST, validator));
+            res.status(HTTP_CODE.BAD_REQUEST).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.PUT, HTTP_CODE.BAD_REQUEST, validator));
             next();
         }
     },
@@ -62,11 +62,11 @@ module.exports = {
     getAllExercises: function(req, res, next) {
         exerciseService.getAllExercises()
         .then((result) => {
-            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.GET, HTTP_CODE.OK, result));
+            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.GET, HTTP_CODE.OK, result));
             next();
         })
         .catch(() => {
-            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(EXERCISE_ROUTE, HTTP_METHOD.GET, HTTP_CODE.ERROR));
+            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.GET, HTTP_CODE.ERROR));
             next();
         });
     }

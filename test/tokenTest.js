@@ -15,7 +15,7 @@ describe('Token', function() {
         .set('Accept', 'application/json')
         .send({
             patientId: "38662776",
-            exerciseId: "-LQVdhyURbwOXbeiE4t1",
+            exerciseId: "-LQVjmX0LKfzC1Psu6pm",
             repetitions: 3
         })
         .expect('Content-Type', /json/)
