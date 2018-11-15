@@ -103,6 +103,20 @@ describe('Exercise', function() {
         });
     });
 
+    describe("DELETE", function() {
+        it("200 - debe eliminar la ref que fue creada al update", function(done) {
+            request(app)
+            .delete('/exercise/'+updatedExerciseId)
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end((err) => {
+                if (err) return done(err);
+                done();
+            });
+        });
+    });
+
     describe("GET", function() {
         it("200 - Debería devolver un listado de todos los ejercicios", function(done) {
             request(app)
