@@ -32,6 +32,9 @@ module.exports = {
             });
         }
 
+        if(shouldIgnore) {
+            validatorObj.error = false;
+        }
         return validatorObj;
     }
 };

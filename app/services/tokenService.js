@@ -31,7 +31,7 @@ module.exports = {
 			const tokenValueReg = tokenValue.split('_');
 			const possibleTokenPatientId = tokenValueReg[0];
 			const possibleTokenSession = tokenValueReg[1];
-			response = {
+			let response = {
 				patient : null,
 				isValid : false,
 				exercise : null,

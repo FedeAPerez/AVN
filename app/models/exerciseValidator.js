@@ -49,6 +49,7 @@ module.exports = {
                 paramNeeded: "endingState" 
             });
         }
+        
         if(shouldIgnore) {
             validatorObj.error = false;
         }
