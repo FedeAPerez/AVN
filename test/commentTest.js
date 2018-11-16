@@ -14,7 +14,7 @@ describe('Comment', function() {
             .post('/patient/38662776/comment')
             .set('Accept', 'application/json')
             .send({
-                comment: "Es lo mejor que le pasó al mundo"
+                comment: "Evoluciones frecuentes en las últimas semanas."
             })
             .expect('Content-Type', /json/)
             .expect(200)

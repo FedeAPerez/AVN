@@ -17,7 +17,7 @@ module.exports = {
             let totalSessions = 0;
             let graphData = [];
             // A nivel de sesion
-            for(session in element.sessionsInfo) {
+            for(var session in element.sessionsInfo) {
                 if(session) {
                     totalSessions++;
                     // a nivel de ejercicio

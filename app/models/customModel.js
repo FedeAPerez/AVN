@@ -7,7 +7,7 @@ var Custom = function() {
         let ref = database.ref('custom/'+idExercise+'/'+idPatient)
         ref.set({
             exercise: {
-                intialState: customObject.initialState,
+                initialState: customObject.initialState,
                 endingState: customObject.endingState
             }
         }, function(err) {
