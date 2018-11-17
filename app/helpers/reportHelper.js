@@ -21,7 +21,8 @@ module.exports = {
                 if(session) {
                     totalSessions++;
                     // a nivel de ejercicio
-                    element.sessionsInfo[session].forEach(exercise => {
+                    let arr = Object.values(element.sessionsInfo[session]);
+                    arr.forEach(exercise => {
                         totalExercises++;
                         totalAdjustments += exercise.Desvios;
                         graphData.push({

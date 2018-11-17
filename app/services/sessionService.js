@@ -8,6 +8,26 @@ const PatientHelper = require('../helpers/patientHelper');
 const ReportHelper = require('../helpers/reportHelper');
 
 module.exports = {
+	changeIdSession: function(idToken, idPatient) {
+		return new Promise(function(resolve, reject) {
+			try {
+				let sessionModel = new Session();
+				sessionModel._setInvalidSessionToPatient(idToken, idPatient,
+				function(data) {
+					console.log(data);
+					resolve(data);
+				},
+				function(err) {
+					reject();
+				});
+			}
+			catch(err) {
+				console.error(err);
+				reject();
+			}
+		});	
+	},
+
 	saveData: function(data) {
 		return new Promise(function(resolve, reject) {
 			try {
@@ -16,7 +36,7 @@ module.exports = {
 					var ref = database.ref('/session/' + tokenSplited[0] + '/' + tokenSplited[1] + '/' + element.Ejercicio);
 					ref.set(element);
 				});
-				resolve(204);
+				resolve();
 			}
 			catch(err) {
 				console.error("Error al guardar los datos de sesión");

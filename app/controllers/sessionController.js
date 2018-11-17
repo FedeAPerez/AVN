@@ -18,6 +18,18 @@ module.exports = {
         });
     },
 
+    changeIdSession: function(req, res, next) {
+        sessionService.changeIdSession(req.params.idToken, req.params.idPatient)
+        .then((result) => {
+            res.status(HTTP_CODE.OK).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.POST, HTTP_CODE.OK));
+            next();
+        })
+        .catch((err) => {
+            res.status(HTTP_CODE.ERROR).send(httpBuilder.constructHttpResponse(ROUTE, HTTP_METHOD.POST, HTTP_CODE.ERROR));
+            next();
+        });
+    },
+
     getSessionByStatus: function(req, res, next) {
         sessionService.getSessionByStatus(req.params.filterDescription)
         .then((result) => {

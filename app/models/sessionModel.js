@@ -5,6 +5,41 @@ function Session() {
 
 }
 
+Session.prototype._setInvalidSessionToPatient = function(idToken, idPatient, resolve, reject) {
+    let ref = database.ref('session/' + idToken);
+    ref.once("value", function(data) {
+        if(data.val()) {
+            // funcion para agregar a               pacienteNuevoDestino    nuevotoken
+            // falta obtener el nuevo token únicamente
+            let addRef = database.ref('session/' + idPatient);
+            addRef.push();
+            let pureData = data.val();
+            // sessions
+            let arrayOfSessions = Object.keys(data.val());
+
+            let cleanExercises = {};
+            arrayOfSessions.forEach(session => {
+                cleanExercises[session] = {};
+                let exercises = pureData[session];
+                exercises.forEach(exercise => {
+                    if(exercise) {
+                        cleanExercises[session][exercise.Ejercicio] = exercise;
+                        console.log(exercise);
+                    }
+                });
+            })
+            // agrega
+            addRef.set(cleanExercises);
+            // borra
+            //ref.remove();
+            resolve();
+        }
+        else {
+            reject();
+        }
+    });
+};
+
 Session.prototype._getAll = function(resolve, reject) {
     let ref = database.ref('session/');
     ref.once("value", function(data) {
