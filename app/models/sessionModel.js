@@ -31,7 +31,7 @@ Session.prototype._setInvalidSessionToPatient = function(idToken, idPatient, res
             // agrega
             addRef.set(cleanExercises);
             // borra
-            //ref.remove();
+            ref.remove();
             resolve();
         }
         else {
@@ -86,8 +86,8 @@ Session.prototype._getAllWithNoPatient = function(listOfPatients, resolve, rejec
             Object.keys(snapshot.val()).map(k => {
                 if(listOfIds.indexOf(k) == -1)
                     listOfFilteredPatients.push({
-                        idPatient : k,
-                        sessionsInfo : snapshot.val()[k]
+                        id: k,
+                        name : k
                     });
             });
             resolve(listOfFilteredPatients);

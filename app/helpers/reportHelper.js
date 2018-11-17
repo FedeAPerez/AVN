@@ -27,7 +27,7 @@ module.exports = {
                         totalAdjustments += exercise.Desvios;
                         graphData.push({
                             name: "Ejercicio " + totalExercises,
-                            uv: exercise.Desvios
+                            desvios: exercise.Desvios
                         });
                     });
                 }
